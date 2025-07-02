@@ -326,6 +326,13 @@ func main() {
 			cachedData["timetable"] != nil &&
 			cachedData["attendance"] != nil &&
 			cachedData["marks"] != nil {
+
+			// Always fetch ophour from db and add to cachedData
+			ophour, err := db.GetOphourByToken(encodedToken)
+			if err == nil && ophour != "" {
+				cachedData["ophour"] = ophour
+			}
+
 			go func() {
 				data, err := fetchAllData(token)
 				if err != nil {
@@ -414,6 +421,16 @@ func fetchAllData(token string) (map[string]interface{}, error) {
 
 	if user, ok := data["user"].(*types.User); ok {
 		data["regNumber"] = user.RegNumber
+	}
+
+	// Fetch ophour from database
+	db, err := databases.NewDatabaseHelper()
+	if err == nil {
+		encodedToken := utils.Encode(token)
+		ophour, err := db.GetOphourByToken(encodedToken)
+		if err == nil && ophour != "" {
+			data["ophour"] = ophour
+		}
 	}
 
 	return data, nil
