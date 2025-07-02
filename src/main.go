@@ -29,13 +29,9 @@ func main() {
 	if globals.DevMode {
 		godotenv.Load()
 	}
-	prefork := os.Getenv("PREFORK")
-	if prefork == "" {
-		prefork = "true"
-	}
 
 	app := fiber.New(fiber.Config{
-		Prefork:      prefork == "true",
+		Prefork:      false,
 		ServerHeader: "GoScraper",
 		AppName:      "GoScraper v3.0",
 		JSONEncoder:  json.Marshal,
