@@ -174,6 +174,8 @@ func (c *CalendarFetcher) parseCalendar(html string) (*types.CalendarResponse, e
 		}
 	}
 
+	fmt.Println(today, tomorrow)
+
 	return &types.CalendarResponse{
 		Today:    today,
 		Tomorrow: tomorrow,
