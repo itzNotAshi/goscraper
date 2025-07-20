@@ -104,7 +104,7 @@ func (a *AcademicsFetch) ScrapeAttendance(html string) (*types.AttendanceRespons
 	})
 
 	if rows.Length() == 0 {
-		fmt.Println("No attendance data found")
+		// fmt.Println("No attendance data found")
 		return &types.AttendanceResponse{RegNumber: regNumber, Attendance: []types.Attendance{}}, nil
 	}
 

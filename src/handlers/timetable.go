@@ -14,7 +14,6 @@ func GetTimetable(token string) (*types.TimetableResult, error) {
 		return &types.TimetableResult{}, err
 	}
 
-	fmt.Println(user)
 	if user.Batch == "" {
 		user.Batch = "1"
 	}
