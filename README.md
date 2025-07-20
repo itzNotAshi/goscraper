@@ -6,9 +6,6 @@ Goscraper is a backend that fetches and scrapes data from SRM Academia and parse
 > This is part of a **monorepo** containing both frontend and backend components. Please fork the entire monorepo instead of cloning this backend separately.
 
 
-> [!TIP]
-> GoScraper is now open-sourced and self-deployable. Run your own goscraper instance
-
 ## Prerequisites
 
 Before starting the application, you need to set up Supabase and configure the required environment variables.

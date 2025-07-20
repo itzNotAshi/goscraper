@@ -4,7 +4,6 @@ import (
 	"goscraper/src/helpers"
 	"goscraper/src/types"
 	"strconv"
-	"fmt"
 )
 
 func GetTimetable(token string) (*types.TimetableResult, error) {
