@@ -102,7 +102,7 @@ func (c *CoursePage) GetCourses() (*types.CourseResponse, error) {
 	}
 	html := htmlParts[1]
 	html = strings.Split(html, "</table>")[0]
-	
+
 	html = `<table style="font-size :16px;" border="1" align="center" cellpadding="1" cellspacing="1" bgcolor="#FAFAD2"><tbody>` + html + "</tbody></table>"
 
 	doc, err := goquery.NewDocumentFromReader(strings.NewReader(html))
@@ -120,7 +120,7 @@ func (c *CoursePage) GetCourses() (*types.CourseResponse, error) {
 		if i == 0 {
 			return
 		}
-		
+
 		cells := row.Find("td")
 		if cells.Length() > 0 {
 			course := c.parseCourseRow(cells)
@@ -137,7 +137,7 @@ func (c *CoursePage) GetCourses() (*types.CourseResponse, error) {
 }
 
 func (c *CoursePage) parseCourseRow(cells *goquery.Selection) *types.Course {
-	if cells.Length() < 12 {
+	if cells.Length() < 11 {
 		return nil
 	}
 
@@ -153,8 +153,8 @@ func (c *CoursePage) parseCourseRow(cells *goquery.Selection) *types.Course {
 	courseType := getText(6)
 	faculty := getText(7)
 	slot := getText(8)
-	room := getText(10)
-	academicYear := getText(11)
+	room := getText(9)
+	academicYear := getText(10)
 
 	if credit == "" {
 		credit = "N/A"
