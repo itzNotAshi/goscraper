@@ -222,7 +222,6 @@ func (lf *LoginFetcher) GetSession(password string, lookup map[string]interface{
 
 	cookies := resp.Header.Peek("Set-Cookie")
 	data["cookies"] = string(cookies)
-	fmt.Println("SESSIONDATA", data)
 	return data, nil
 }
 

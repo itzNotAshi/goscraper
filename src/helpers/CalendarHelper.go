@@ -40,7 +40,7 @@ func (c *CalendarFetcher) GetCalendar() (*types.CalendarResponse, error) {
 	resp := fasthttp.AcquireResponse()
 	defer fasthttp.ReleaseResponse(resp)
 
-	req.SetRequestURI("https://academia.srmist.edu.in/srm_university/academia-academic-services/page/Academic_Planner_2024_25_EVEN")
+	req.SetRequestURI("https://academia.srmist.edu.in/srm_university/academia-academic-services/page/Academic_Planner_2025_26_ODD")
 	req.Header.SetMethod("GET")
 	req.Header.Set("accept", "*/*")
 	req.Header.Set("accept-language", "en-US,en;q=0.9")
@@ -173,6 +173,8 @@ func (c *CalendarFetcher) parseCalendar(html string) (*types.CalendarResponse, e
 			}
 		}
 	}
+
+	// fmt.Println(today, tomorrow)
 
 	return &types.CalendarResponse{
 		Today:    today,

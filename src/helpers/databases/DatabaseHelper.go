@@ -195,3 +195,26 @@ func (db *DatabaseHelper) FindByToken(table string, token string) (map[string]in
 
 	return results[0], nil
 }
+
+func (db *DatabaseHelper) GetOphourByToken(token string) (string, error) {
+	var results []map[string]interface{}
+
+	query := map[string]string{
+		"token": token,
+	}
+
+	_, err := db.client.From("goscrape").Select("ophour", "", false).Match(query).ExecuteTo(&results)
+	if err != nil {
+		return "", err
+	}
+
+	if len(results) == 0 {
+		return "", nil
+	}
+
+	ophour, ok := results[0]["ophour"].(string)
+	if !ok {
+		return "", nil
+	}
+	return ophour, nil
+}
